@@ -13,12 +13,7 @@ import useFluid from "./useFluid"
 
 export default function HeroSection({
   fields,
-  primary: {
-    background_imageSharp,
-    background_image,
-    pull_next_section_up,
-    variant,
-  },
+  primary: { background_image, pull_next_section_up, variant },
   headerStyle,
 }) {
   const bgImageFluid = useFluid(background_image, {

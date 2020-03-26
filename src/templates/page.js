@@ -13,6 +13,7 @@ import HeroSection from "../components/HeroSection"
 import TextSection from "../components/TextSection"
 import ListSection from "../components/ListSection"
 import WorkSamples from "../components/WorkSamples"
+import BlogPosts from "../components/BlogPosts"
 import ServicesSection from "../components/ServicesSection"
 import NextPageSection from "../components/NextPageSection"
 export default function Page({
@@ -20,10 +21,7 @@ export default function Page({
     prismic: { page },
   },
 }) {
-
-  
-
-
+  console.log(page)
 
   return (
     <Layout>
@@ -51,6 +49,8 @@ export default function Page({
               return (
                 <WorkSamples key={i} {...{ fields, primary }}></WorkSamples>
               )
+            case "blog_posts":
+              return <BlogPosts key={i} {...{ fields, primary }}></BlogPosts>
             case "services_grid":
               return (
                 <ServicesSection
@@ -131,6 +131,12 @@ export const query = graphql`
               pull_next_section_up
               title
               text
+            }
+          }
+          ... on PRISMIC_PageBodyBlog_posts {
+            type
+            primary {
+              posts_per_page
             }
           }
           ... on PRISMIC_PageBodyList_section {

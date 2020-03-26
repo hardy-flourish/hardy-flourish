@@ -1,5 +1,6 @@
 const path = require(`path`)
 const axios = require("axios")
+const moment = require("moment")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const template = path.resolve("./src/templates/page.js")
@@ -84,6 +85,22 @@ exports.createResolvers = ({ createResolvers }) => {
         },
       },
     },
+    PRISMIC_Blog_post: {
+      date: {
+        type: "PRISMIC_Date",
+        resolve: resolveDate("date", "DD MMM YYYY"),
+      },
+    },
   }
   createResolvers(resolvers)
+}
+
+function resolveDate(field, format = "LL") {
+  return (source, args, context, info) => {
+    const date = source[field] ? source[field] : null
+
+    const formated = date ? moment(date).format(format) : null
+
+    return formated
+  }
 }
