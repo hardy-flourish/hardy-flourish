@@ -1,31 +1,17 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, StaticQuery } from "gatsby"
 import css from "@emotion/css"
 import tw from "tailwind.macro"
 import logo from "../images/logo-footer.svg"
-function Footer() {
+function Footer({ data }) {
   const {
     prismic: {
       allFooters: {
         edges: [node],
       },
     },
-  } = useStaticQuery(graphql`
-    {
-      prismic {
-        allFooters {
-          edges {
-            node {
-              logo
-              text
-              trademark
-            }
-          }
-        }
-      }
-    }
-  `)
+  } = data
   const footer = node["node"]
 
   return (
@@ -138,4 +124,25 @@ function Footer() {
   )
 }
 
-export default Footer
+export default function WithData() {
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          prismic {
+            allFooters {
+              edges {
+                node {
+                  logo
+                  text
+                  trademark
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={data => <Footer data={data}></Footer>}
+    ></StaticQuery>
+  )
+}
