@@ -1,6 +1,6 @@
 /* custom-components */
 .container {
-  @apply mx-auto;
+  @apply mx-auto px-4 max-w-screen-lg;
 }
 
 .row {
@@ -14,4 +14,26 @@
   .col {
     @apply px-4;
   }
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+  @screen md {
+    min-height: 200px;
+  }
+}
+
+.pull-up-next-section {
+  @apply -mb-16;
+  & + * {
+    @apply pt-20;
+    .pull {
+      @apply -mt-48;
+    }
+  }
+}
+.pull {
+  @apply relative;
+  z-index: 2;
 }

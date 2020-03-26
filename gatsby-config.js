@@ -25,6 +25,32 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-plugin-webfonts",
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Work Sans",
+              variants: ["400", "500", "600"],
+              //subsets: ['latin']
+              //text: 'Hello'
+              fontDisplay: "swap",
+              //strategy: 'selfHosted' // 'base64' || 'cdn'
+            },
+          ],
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: "handf", // required
+        defaultLang: "en-us", // optional, but recommended
+        accessToken:
+          "MC5YbXpfTGhFQUFDRUFBWVZC.aO-_ve-_vRbvv71977-9Oe-_ve-_ve-_ve-_ve-_vWPvv73vv71SVgxQRO-_ve-_ve-_vVrvv71977-9VDnvv70R",
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

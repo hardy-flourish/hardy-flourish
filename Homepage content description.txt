@@ -1,0 +1,58 @@
+[HOMEPAGE]
+
+----------------------------------------------------------------
+
+[HERO SECTION - INTRO]
+
+[CAPTION] HARDY & FLOURISH
+[HEADING 1] Making businesses bloom
+
+[LOREM IPSUM] Promote your business on major search engines, social media platforms, and through positive reputation management. Build a community that endorses and more importantly purchases with fully managed digital campiagns run by proven experts at Hardy & Flourish. Let our digital marketing experts worry about running your digital marketing so you can run your business.
+
+[CTA BUTTON] Get started [LAUNCHES DRIFT BOT - https://www.drift.com/#getademo]
+
+[/HERO SECTION] 
+
+----------------------------------------------------------------
+
+[BODY SECTION 1 - WORK]
+
+[HEADING 2] TRUSTED BY BREAKTHROUGH BRANDS
+
+[LOREM IPSUM] In just a short space of time, the team at Hardy & Flourish have developed a reputation for delivering impressive results, exposing breakthrough brands to large audiences through the full range of digital media. Whether that's by advertising innovative insurance products through Google and Bing PPC, delivering mass comms through email and display for creative clothing retailers, or building a social following and community for large scale consumer brands, we're proud to say that we've made some impressive achievements. Check out our work...
+
+[A CLICK ON THE TEXT OR THE HEADING TAKES YOU TO THE WORK PAGE] 
+
+[BRAND LOGO CAROSELS - CLICK ON CARD LINKS TO RELEVANT CASE STUDY ON THE "WORK" PAGE] 
+
+[/BODY SECTION 1]
+
+----------------------------------------------------------------
+
+[BODY SECTION 2 - SERVICES]
+
+[HEADING 2] MAKING YOU WIN AT DIGITAL 
+[HEADING 3] AUDIENCE BUILDING
+[LOREM IPSUM] Our marketing professionals will help you define or reboot your brand, making you stand out from the competition. We capture beautiful and professional photos, utilizing them across all platforms to promote your business. We can design a wide range of print materials for your company, from small items such as business cards and flyers to large items such as billboards.
+
+[HEADING 3] CONVERSION OPTIMISATION
+[LOREM IPSUM] We utilise the latest technology to create inspiring and thoughtful designs for your brand over time. Our design team will work with you to create an aesthetically pleasing and functional design for your website. We help your brand express itself from name, logo, corporate ID, packaging design and copy.
+
+[SERVICES CAROSEL - CLICK ON CARD LINKS TO RELEVANT SERVICE ON SERVICES PAGE]
+
+[A CLICK ON THE TEXT OR THE HEADING TAKES YOU TO THE SERVICES PAGE] 
+
+[/BODY SECTION 2]
+
+----------------------------------------------------------------
+
+[BODY SECTION 3 - ABOUT]
+
+[HEADING 2] LOOSLY ALIGNED, TIGHTLY COUPLED
+[LOREM IPSUM] We're a digital agency specialising in digital marketing working to help promote companies and brands who need exposure to big audiences. We have expertise in creating and managing paid-for search engine marketing on Google and Bing platforms, we have a wealth of experience in marketing on emerging social media marketplaces of Facebook, Instagram, Snapchat and TikTok, and we have an extensive track record of delivering excellence in search engine optimisation of website and native application content.
+
+[A CLICK ON THE TEXT OR THE HEADING TAKES YOU TO THE SERVICES PAGE] 
+
+[READ MORE BUTTON - LINKS TO ABOUT PAGE]
+
+[/BODY SECTION 3]
