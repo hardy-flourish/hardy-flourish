@@ -3,7 +3,7 @@ const axios = require("axios")
 const moment = require("moment")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const template = path.resolve("./src/templates/page.js")
+
   const { data } = await graphql(
     `
       {
@@ -17,14 +17,80 @@ exports.createPages = async ({ graphql, actions }) => {
               }
             }
           }
+          allWorks {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+                full_text
+                title
+                image
+              }
+            }
+          }
+          allServices {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+                full_text
+                title
+                icon
+                description
+              }
+            }
+          }
+          allBlog_posts {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+                image
+                date
+                title
+                content
+              }
+            }
+          }
         }
       }
     `
   )
+
   data.prismic.allPages.edges.forEach(({ node }) => {
     createPage({
       path: node._meta.uid == "homepage" ? "/" : `/${node._meta.uid}/`,
-      component: template,
+      component: path.resolve("./src/templates/page.js"),
+      context: {
+        uid: node._meta.uid,
+      },
+    })
+  })
+  data.prismic.allWorks.edges.forEach(({ node }) => {
+    createPage({
+      path: `/work/${node._meta.uid}/`,
+      component: path.resolve("./src/templates/work.js"),
+      context: {
+        uid: node._meta.uid,
+      },
+    })
+  })
+  data.prismic.allServices.edges.forEach(({ node }) => {
+    createPage({
+      path: `/service/${node._meta.uid}/`,
+      component: path.resolve("./src/templates/service.js"),
+      context: {
+        uid: node._meta.uid,
+      },
+    })
+  })
+  data.prismic.allBlog_posts.edges.forEach(({ node }) => {
+    createPage({
+      path: `/blog/${node._meta.uid}/`,
+      component: path.resolve("./src/templates/blog-post.js"),
       context: {
         uid: node._meta.uid,
       },

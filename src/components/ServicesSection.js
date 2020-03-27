@@ -4,7 +4,10 @@ import css from "@emotion/css"
 import tw from "tailwind.macro"
 import bg from "../images/logo_in_the_back.png"
 import Slider from "./Slider"
+import Modal from "./Modal"
 import useMeasure from "react-use-measure"
+import { ServiceContent } from "../templates/service"
+import { useState } from "react"
 export default function ServicesSection({
   fields,
   primary,
@@ -83,36 +86,52 @@ export default function ServicesSection({
           </div>
         )}
       </div>
-      s
     </section>
   )
 }
 
 function Card({ service }) {
+  const [modal, setModal] = useState(null)
   return (
-    <div
-      className="card p-8 bg-blue-700 flex items-center justify-center"
-      css={css`
-        h4 {
-          ${tw`text-xl`}
-          &::after {
-            content: "";
-            ${tw`bg-gold block mx-auto mt-4`}
-            height: 2px;
-            width: 70%;
-          }
-        }
-        p {
-          ${tw`text-sm`}
-        }
-      `}
-    >
+    <>
       {" "}
-      <div className="text-center text-white">
-        <img className=" w-auto h-24 mx-auto" src={service.icon.url}></img>
-        {RichText.render(service.title)}
-        {RichText.render(service.description)}
+      <div
+        onClick={() => {
+          !modal &&
+            setModal({
+              url: "/service/" + service._meta.uid,
+            })
+        }}
+        className="card p-8 bg-blue-700 flex items-center justify-center cursor-pointer"
+        css={css`
+          h4 {
+            ${tw`text-xl`}
+            &::after {
+              content: "";
+              ${tw`bg-gold block mx-auto mt-4`}
+              height: 2px;
+              width: 70%;
+            }
+          }
+          p {
+            ${tw`text-sm`}
+          }
+        `}
+      >
+        {" "}
+        <div className="text-center text-white">
+          <img className=" w-auto h-24 mx-auto" src={service.icon.url}></img>
+          {RichText.render(service.title)}
+          {RichText.render(service.description)}
+        </div>
       </div>
-    </div>
+      {modal && (
+        <Modal
+          url={modal.url}
+          component={ServiceContent}
+          close={() => setModal(null)}
+        ></Modal>
+      )}
+    </>
   )
 }

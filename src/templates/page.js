@@ -89,6 +89,9 @@ export const query = graphql`
               work {
                 ... on PRISMIC_Work {
                   image
+                  _meta {
+                    uid
+                  }
                 }
               }
             }
@@ -102,6 +105,9 @@ export const query = graphql`
             fields {
               service {
                 ... on PRISMIC_Service {
+                  _meta {
+                    uid
+                  }
                   icon
                   title
                   description

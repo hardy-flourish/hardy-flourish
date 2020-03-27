@@ -1,15 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { RichText } from "prismic-reactjs"
 import css from "@emotion/css"
 import tw from "tailwind.macro"
 import bg from "../images/logo_in_the_back.png"
 import Slider from "./Slider"
 import useMeasure from "react-use-measure"
+import Modal from "./Modal"
+import { WorkContent } from "../templates/work"
 export default function WorkSamplesSection({
   fields,
   primary,
   primary: { variant: isSlider, background_color },
 }) {
+  const [isOpen, setIsOpen] = useState(null)
+
   return (
     <section
       css={css`
@@ -68,7 +72,7 @@ export default function WorkSamplesSection({
                 fields.map((field, i) => {
                   return (
                     <div key={i} className="px-2">
-                      <Card image={field.work.image}></Card>
+                      <Card work={field.work}></Card>
                     </div>
                   )
                 })}
@@ -83,7 +87,7 @@ export default function WorkSamplesSection({
                     key={i}
                     className="col h-full w-full md:w-1/2 lg:w-1/3 my-4 rounded-lg"
                   >
-                    <Card image={field.work.image}></Card>
+                    <Card work={field.work}></Card>
                   </div>
                 )
               })}
@@ -94,15 +98,32 @@ export default function WorkSamplesSection({
   )
 }
 
-function Card({ image }) {
+function Card({ work }) {
   const [ref, { width }] = useMeasure()
+  const [modal, setModal] = useState(null)
   return (
-    <div
-      ref={ref}
-      style={{ height: width + "px" }}
-      className="card p-8 bg-blue-700 flex items-center justify-center"
-    >
-      <img src={image.url}></img>
-    </div>
+    <>
+      {" "}
+      <div
+        onClick={() => {
+          !modal &&
+            setModal({
+              url: "/work/" + work._meta.uid,
+            })
+        }}
+        ref={ref}
+        style={{ height: width + "px" }}
+        className="card cursor-pointer select-text p-8 bg-blue-700 flex items-center justify-center"
+      >
+        <img src={work.image.url}></img>
+      </div>
+      {modal && (
+        <Modal
+          url={modal.url}
+          component={WorkContent}
+          close={() => setModal(null)}
+        ></Modal>
+      )}
+    </>
   )
 }
