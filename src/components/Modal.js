@@ -5,7 +5,7 @@ import { Global } from "@emotion/core"
 import css from "@emotion/css"
 import { MdClose } from "react-icons/md"
 import { animated, useTransition } from "react-spring"
-const modalRoot = document.getElementById("modal")
+
 const Modal = ({ url, close, component: Component }) => {
   const elRef = useRef(null)
   const containerRef = useRef(null)
@@ -65,9 +65,11 @@ const Modal = ({ url, close, component: Component }) => {
     }
   }, [])
   useEffect(() => {
-    modalRoot.appendChild(elRef.current)
+    const modalRoot =
+      typeof window !== "undefined" ? document.getElementById("modal") : null
+    modalRoot && modalRoot.appendChild(elRef.current)
     return () => {
-      modalRoot.removeChild(elRef.current)
+      modalRoot && modalRoot.removeChild(elRef.current)
     }
   }, [])
 

@@ -114,6 +114,10 @@ const getBase64 = async url => {
 }
 
 const createImageFluidObject = async image => {
+  if (!image) {
+    return {}
+  }
+
   const { dimensions, maxWidth = 1980, url } = image
   var baseUrl = url
   if (url.match(/w=[0-9]+/)) {

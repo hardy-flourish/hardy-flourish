@@ -32,8 +32,6 @@ export function ServiceContent({
     prismic: { service: data },
   },
 }) {
-  console.log(data)
-
   return (
     <div
       css={css`

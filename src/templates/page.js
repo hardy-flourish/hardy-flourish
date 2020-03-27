@@ -21,8 +21,6 @@ export default function Page({
     prismic: { page },
   },
 }) {
-  console.log(page)
-
   return (
     <Layout>
       {page.body &&
