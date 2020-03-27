@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import axios from "axios"
-import { Global } from "@emotion/core"
 import css from "@emotion/css"
 import { MdClose } from "react-icons/md"
 import { animated, useTransition } from "react-spring"
-
+const modalRoot =
+  typeof window !== "undefined" ? document.getElementById("modal") : null
 const Modal = ({ url, close, component: Component }) => {
   const elRef = useRef(null)
   const containerRef = useRef(null)
@@ -40,8 +40,10 @@ const Modal = ({ url, close, component: Component }) => {
   useEffect(() => {
     url &&
       axios
-        .get(`http://localhost:8000/page-data/${url}/page-data.json`)
+        .get(`${window.location.origin}/page-data${url}/page-data.json`)
         .then(res => {
+          console.log(res)
+
           setContent(res.data.result.data)
         })
         .catch(err => {
@@ -65,8 +67,6 @@ const Modal = ({ url, close, component: Component }) => {
     }
   }, [])
   useEffect(() => {
-    const modalRoot =
-      typeof window !== "undefined" ? document.getElementById("modal") : null
     modalRoot && modalRoot.appendChild(elRef.current)
     return () => {
       modalRoot && modalRoot.removeChild(elRef.current)
